@@ -216,3 +216,37 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Environment variables / API keys
+.env
+*.env
+.streamlit/secrets.toml
+
+# Raw documents and datasets
+data/raw_documents/
+data/processed_chunks/
+data/evaluation/generated_answers/
+
+# Vector databases and indexes
+vector_store/
+chroma_db/
+faiss_index/
+*.faiss
+*.index
+*.pkl
+
+# Results and logs
+results/
+logs/
+*.log
+
+# Model/cache files
+.cache/
+models/
+*.bin
+*.pt
+*.safetensors
+
+# Temporary files
+tmp/
+temp/
+*.tmp
