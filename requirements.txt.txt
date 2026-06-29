@@ -1,0 +1,7 @@
+pandas
+numpy
+pymupdf
+pdfplumber
+tqdm
+openpyxl
+python-dotenv
