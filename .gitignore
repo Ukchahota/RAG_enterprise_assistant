@@ -250,3 +250,22 @@ models/
 tmp/
 temp/
 *.tmp
+.env
+*.env
+.streamlit/secrets.toml
+
+# Local config files
+config.local.yaml
+config.local.json
+
+# Generated reports / exports
+exports/
+reports/generated/
+
+# Large document formats if accidentally placed outside ignored folders
+*.pdf
+*.docx
+
+# But allow proposal/docs if you intentionally want them in repo
+!docs/*.pdf
+!docs/*.docx
