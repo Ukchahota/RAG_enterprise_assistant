@@ -5,3 +5,5 @@ pdfplumber
 tqdm
 openpyxl
 python-dotenv
+sentence-transformers
+faiss-cpu
