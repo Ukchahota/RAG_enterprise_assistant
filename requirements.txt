@@ -8,4 +8,4 @@ python-dotenv
 sentence-transformers
 faiss-cpu
 openai
-groq
+groqrank-bm25

@@ -1,23 +1,12 @@
-﻿
- question,expected_documents,question_type,notes 
-
-What support is available for international students?,Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve IAG or ELC support
-
-What happens if I do not pay tuition fees on time?,UOL payment policy,factual,Should retrieve payment policy information
-
-Where can students get money advice?,Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve money advice or student support information
-
-What should students do in an emergency?,Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve emergency information
-
-What visa advice is available for students?,Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve International Advice and Guidance information
-
-What are the student conduct procedures?,Student Conduct Procedures||Student conduct Policy,factual,Should retrieve student conduct policy/procedure document
-
-Can international students get help with English language support?,Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve English Language Centre information
-
-Where is International Advice and Guidance based?,Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve IAG location information
-
-What happens if I break student conduct rules?,Student Conduct Procedures||Student conduct Policy||Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve conduct rules or procedure information
-
-Who can students contact for visa extension advice?,Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook,factual,Should retrieve IAG visa extension support
-
+﻿"question","expected_documents","question_type","notes"
+"What support is available for international students?","Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve IAG or ELC support"
+"What happens if I do not pay tuition fees on time?","UOL payment policy||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve non-payment fee consequences or payment policy information"
+"According to the UOL payment policy, what are the consequences of non-payment of programme fees?","UOL payment policy","policy-specific","Should retrieve the formal payment policy document"
+"Where can students get money advice?","Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve money advice or student support information"
+"What should students do in an emergency?","Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve emergency information"
+"What visa advice is available for students?","Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve International Advice and Guidance information"
+"What are the student conduct procedures?","Student Conduct Procedures||Student conduct Policy","factual","Should retrieve student conduct policy/procedure document"
+"Can international students get help with English language support?","Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve English Language Centre information"
+"Where is International Advice and Guidance based?","Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve IAG location information"
+"What happens if I break student conduct rules?","Student Conduct Procedures||Student conduct Policy||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve conduct rules or procedure information"
+"Who can students contact for visa extension advice?","Student guide for UK visa holders||Undergraduate University Handbook||Postgraduate University handbook","factual","Should retrieve IAG visa extension support"
