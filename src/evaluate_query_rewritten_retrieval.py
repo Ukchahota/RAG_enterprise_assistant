@@ -9,7 +9,12 @@ from src.query_rewritten_retriever import QueryRewrittenRetriever
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-QUESTIONS_PATH = PROJECT_ROOT / "data" / "evaluation" / "test_questions.csv"
+QUESTIONS_PATH = (
+    PROJECT_ROOT
+    / "data"
+    / "evaluation"
+    / "test_questions_answerable.csv"
+)
 OUTPUT_DIR = PROJECT_ROOT / "results"
 OUTPUT_PATH = OUTPUT_DIR / "retrieval_evaluation_query_rewritten.csv"
 

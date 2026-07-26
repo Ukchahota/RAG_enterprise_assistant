@@ -1,0 +1,8 @@
+﻿question_id,question,question_type,difficulty,answerable,expected_documents,expected_topic,gold_answer,gold_evidence,expected_page,notes
+Q045,Can I appeal?,ambiguous,hard,Needs clarification,Appeals policy,Insufficient detail about decision and grounds,,,,Ideal system response should ask what decision is being challenged and why.
+Q046,What happens if I miss the deadline?,ambiguous,hard,Needs clarification,Appeals policy | Complaints policy | Extenuating circumstances policy | UOL payment policy,Unspecified deadline,,,,Tests whether the system avoids choosing a random policy.
+Q047,Can I get more time?,ambiguous,hard,Needs clarification,Assessment policy | Extenuating circumstances policy,Unspecified extension request,,,,"Should ask whether this concerns an assessment, appeal, payment or another deadline."
+Q048,Who can help me with my problem?,ambiguous,hard,Needs clarification,Student support policy | Undergraduate University Handbook | Postgraduate University handbook,Unspecified support need,,,,Tests clarification rather than overconfident routing.
+Q049,Am I allowed to work?,ambiguous,hard,Needs clarification,Student guide for UK visa holders,Work permission depends on immigration and study circumstances,,,,Should not provide a definite legal answer without details.
+Q050,Can I retake it?,ambiguous,hard,Needs clarification,Assessment policy | Academic regulations,Unspecified assessment or module,,,,System should request the assessment/programme context.
+Q051,I was treated unfairly. What should I do?,ambiguous,hard,Needs clarification,Complaints policy | Appeals policy | Student conduct policy,Unclear nature of alleged unfair treatment,,,,Tests complaint-versus-appeal routing.

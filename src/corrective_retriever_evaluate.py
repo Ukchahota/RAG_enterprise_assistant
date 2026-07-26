@@ -4,7 +4,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
-from src.bm25_retriever import BM25Retriever
+from src.corrective_retriever import CorrectiveRetriever
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -16,9 +16,10 @@ QUESTIONS_PATH = (
     / "test_questions_answerable.csv"
 )
 OUTPUT_DIR = PROJECT_ROOT / "results"
-OUTPUT_PATH = OUTPUT_DIR / "retrieval_evaluation_bm25.csv"
+OUTPUT_PATH = OUTPUT_DIR / "retrieval_evaluation_corrective.csv"
 
 TOP_K = 5
+CANDIDATE_K = 50
 
 
 def normalise(text: str) -> str:
@@ -114,8 +115,8 @@ def main() -> None:
 
     questions_df = load_questions()
 
-    print("Loading BM25 retriever...")
-    retriever = BM25Retriever()
+    print("Loading corrective retriever...")
+    retriever = CorrectiveRetriever()
 
     rows = []
 
@@ -131,6 +132,7 @@ def main() -> None:
         results = retriever.retrieve(
             query=question,
             top_k=TOP_K,
+            candidate_k=CANDIDATE_K,
         )
 
         retrieval_time = time.time() - start_time
@@ -149,6 +151,10 @@ def main() -> None:
             "precision_at_5": precision_at_k(results, expected_documents, 5),
             "mrr_at_5": reciprocal_rank(results, expected_documents),
             "retrieval_time_seconds": retrieval_time,
+            "correction_applied": results.iloc[0].get("correction_applied", False),
+            "quality_passed": results.iloc[0].get("quality_passed", True),
+            "correction_reasons": results.iloc[0].get("correction_reasons", ""),
+            "retrieval_stage": results.iloc[0].get("retrieval_stage", ""),
             "retrieved_documents": " | ".join(
                 results["document_name"].astype(str).tolist()
             ),
@@ -164,9 +170,9 @@ def main() -> None:
     evaluation_df = pd.DataFrame(rows)
     evaluation_df.to_csv(OUTPUT_PATH, index=False, encoding="utf-8")
 
-    print("\nBM25 Retriever Evaluation")
+    print("\nCorrective Retriever Evaluation")
     print("=" * 50)
-    print("Retriever: BM25 keyword search")
+    print("Retriever: Corrective controller over Hybrid + Query Rewriting")
     print(f"Total questions: {len(evaluation_df)}")
     print(f"Top-1 Hit Rate: {evaluation_df['top_1_hit'].mean():.2f}")
     print(f"Hit@3: {evaluation_df['hit_at_3'].mean():.2f}")
@@ -176,6 +182,10 @@ def main() -> None:
     print(
         "Average retrieval time: "
         f"{evaluation_df['retrieval_time_seconds'].mean():.4f} seconds"
+    )
+    print(
+        "Correction applied to: "
+        f"{evaluation_df['correction_applied'].sum()} / {len(evaluation_df)} questions"
     )
     print(f"\nSaved results to: {OUTPUT_PATH}")
 
