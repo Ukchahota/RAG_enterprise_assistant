@@ -87,7 +87,6 @@ class BM25Retriever:
             [
                 "rank",
                 "score",
-                "chunk_id",
                 "document_name",
                 "document_type",
                 "page_number",

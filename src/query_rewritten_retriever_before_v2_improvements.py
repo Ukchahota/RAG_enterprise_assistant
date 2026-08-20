@@ -1,4 +1,4 @@
-﻿import re
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -49,9 +49,9 @@ def detect_policy_intent(query: str) -> str | None:
 
 def rewrite_query(query: str) -> str:
     """
-    Deterministic query expansion for university policy retrieval.
+    Rule-based query rewriting / query expansion for university policy RAG.
 
-    Expansion is intent-aware to reduce query drift.
+    This is intentionally deterministic so retrieval experiments are repeatable.
     """
     query_lower = query.lower()
 
@@ -78,53 +78,33 @@ def rewrite_query(query: str) -> str:
                 "non-payment",
                 "outstanding balance",
                 "student debt",
+                "sanctions",
                 "payment deadline",
                 "instalment",
+                "restricted access",
+                "library services",
+                "mws account",
+                "canvas",
+                "registration",
+                "award",
+                "degree",
                 "fees office",
             ]
         )
 
     if any(
         term in query_lower
-        for term in [
-            "conduct",
-            "misconduct",
-            "disciplinary",
-            "harassment",
-            "sexual misconduct",
-            "sanction",
-            "investigation",
-        ]
-    ):
-        expansion_terms.extend(
-            [
-                "student conduct",
-                "student conduct procedures",
-                "misconduct",
-                "disciplinary procedure",
-                "investigation",
-                "sanctions",
-                "harassment",
-                "sexual misconduct",
-            ]
-        )
-
-    if any(
-        term in query_lower
-        for term in [
-            "policy",
-            "according to",
-            "procedure",
-            "regulation",
-        ]
+        for term in ["policy", "according to", "procedure", "regulation"]
     ):
         expansion_terms.extend(
             [
                 "official policy",
-                "formal procedure",
+                "formal policy",
+                "procedures",
                 "regulations",
-                "requirements",
-                "guidance",
+                "student programme fees",
+                "accommodation fees",
+                "fines and charges",
             ]
         )
 
@@ -136,6 +116,7 @@ def rewrite_query(query: str) -> str:
     rewritten_query = query + " " + " ".join(expansion_terms)
 
     return clean_spaces(rewritten_query)
+
 
 class QueryRewrittenRetriever:
     """

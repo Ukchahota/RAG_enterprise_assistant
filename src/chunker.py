@@ -7,10 +7,14 @@ from tqdm import tqdm
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-INPUT_PATH = PROJECT_ROOT / "data" / "processed_chunks" / "extracted_pages.csv"
+INPUT_PATH = PROJECT_ROOT / "data" / "extracted_pages.csv"
 OUTPUT_DIR = PROJECT_ROOT / "data" / "processed_chunks"
-OUTPUT_PATH = OUTPUT_DIR / "document_chunks.csv"
-
+OUTPUT_PATH = (
+    PROJECT_ROOT
+    / "data"
+    / "processed_chunks"
+    / "document_chunks.csv"
+)
 
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
