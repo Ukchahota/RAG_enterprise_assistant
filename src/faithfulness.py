@@ -26,6 +26,7 @@ NON_CLAIM_PATTERNS = [
     r"^\s*(i hope|let me know|feel free|please note that if)\b",
     r"^\s*(the evidence (does not|doesn't) (contain|include|provide))",
     r"^\s*(based on the (provided )?evidence)[,:]?\s*$",
+    r":\s*$",
 ]
 
 _pipeline = None
@@ -56,7 +57,10 @@ def split_sentences(text: str) -> list[str]:
     )
     protected = re.sub(r"(\d)\.(\d)", r"\1<DOT>\2", protected)
 
-    parts = re.split(r"(?<=[.!?])\s+", protected)
+    # Split on sentence ends and on bullet markers, so list stems don't fuse
+    # with their first item.
+    protected = re.sub(r"\s*[-*\u2022]\s+", " <BULLET> ", protected)
+    parts = re.split(r"(?<=[.!?])\s+|<BULLET>", protected)
     out = []
     for part in parts:
         part = part.replace("<DOT>", ".").strip()
