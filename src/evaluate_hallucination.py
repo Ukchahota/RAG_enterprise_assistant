@@ -32,7 +32,7 @@ ANSWER_FILES = {
 }
 
 # Set to e.g. ["S0_llm_only"] to verify one system only. None = all available.
-ONLY_SYSTEMS = ["S0_llm_only"]
+ONLY_SYSTEMS = None
 
 # Output suffix so partial runs don't overwrite a full run.
 SUFFIX = "_s0" if ONLY_SYSTEMS and len(ONLY_SYSTEMS) == 1 else ""

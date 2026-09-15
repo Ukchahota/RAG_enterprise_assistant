@@ -3,10 +3,14 @@ Final frozen retriever evaluation.
 
 Pipeline: BM25 top-50 -> CrossEncoder rerank -> top-k
 Evaluated over all answerable V2 questions.
+
+Reports Hit@k, Recall@k, Full Evidence@k, Precision@k, nDCG@k and MRR
+(proposal section 7.2).
 """
 
-from pathlib import Path
+import math
 import time
+from pathlib import Path
 
 import pandas as pd
 from sentence_transformers import CrossEncoder
@@ -30,6 +34,25 @@ REPORT_KS = [1, 3, 5, 10]
 
 def parse_gold(value: str) -> set[str]:
     return {x.strip() for x in str(value).split("|") if x.strip()}
+
+
+def ndcg_at_k(ranked_ids: list[str], gold: set[str], k: int) -> float:
+    """
+    Normalised discounted cumulative gain at k.
+
+    Binary relevance: a chunk has gain 1 if it is a gold chunk, else 0.
+    The ideal ranking places every gold chunk in the top positions.
+    """
+    dcg = sum(
+        1.0 / math.log2(i + 1)
+        for i, chunk_id in enumerate(ranked_ids[:k], start=1)
+        if chunk_id in gold
+    )
+
+    ideal_hits = min(len(gold), k)
+    idcg = sum(1.0 / math.log2(i + 1) for i in range(1, ideal_hits + 1))
+
+    return dcg / idcg if idcg else 0.0
 
 
 def main() -> None:
@@ -60,6 +83,8 @@ def main() -> None:
 
         elapsed = time.perf_counter() - start
 
+        bm25_top5 = set(pool["chunk_id"].astype(str).head(5))
+
         record = {
             "question_id": row["question_id"],
             "question": row["question"],
@@ -69,12 +94,8 @@ def main() -> None:
             "gold_chunk_ids": row["gold_chunk_ids"],
             "gold_chunk_count": len(gold),
             "latency_seconds": elapsed,
-            "bm25_hit_at_5": int(
-                bool(gold & set(pool["chunk_id"].astype(str).head(5)))
-            ),
-            "bm25_recall_at_5": len(
-                gold & set(pool["chunk_id"].astype(str).head(5))
-            ) / len(gold),
+            "bm25_hit_at_5": int(bool(gold & bm25_top5)),
+            "bm25_recall_at_5": len(gold & bm25_top5) / len(gold),
             "gold_in_pool": len(gold & set(ranked_ids)) / len(gold),
             "final_chunk_ids": " | ".join(ranked_ids[:10]),
         }
@@ -85,6 +106,7 @@ def main() -> None:
             record[f"recall_at_{k}"] = len(found) / len(gold)
             record[f"full_evidence_at_{k}"] = int(len(found) == len(gold))
             record[f"precision_at_{k}"] = len(found) / k
+            record[f"ndcg_at_{k}"] = ndcg_at_k(ranked_ids, gold, k)
 
         # Reciprocal rank over the reranked list.
         rr = 0.0
@@ -101,20 +123,27 @@ def main() -> None:
     df.to_csv(OUTPUT_PATH, index=False, encoding="utf-8-sig")
 
     print("\n" + "=" * 72)
-    print("FINAL RETRIEVER — BM25 top-50 + CrossEncoder rerank")
+    print("FINAL RETRIEVER - BM25 top-50 + CrossEncoder rerank")
     print("=" * 72)
     print(f"Questions: {len(df)}")
     print(f"Mean latency: {df['latency_seconds'].mean():.3f}s")
-    print(f"Gold chunks present in top-{CANDIDATE_K} pool: {df['gold_in_pool'].mean():.3f}")
+    print(
+        f"Gold chunks present in top-{CANDIDATE_K} pool: "
+        f"{df['gold_in_pool'].mean():.3f}"
+    )
 
     print("\n--- OVERALL ---")
-    print(f"{'k':>3} | {'Hit':>6} | {'Recall':>6} | {'FullEv':>6} | {'Prec':>6}")
+    print(
+        f"{'k':>3} | {'Hit':>6} | {'Recall':>6} | {'FullEv':>6} | "
+        f"{'Prec':>6} | {'nDCG':>6}"
+    )
     for k in REPORT_KS:
         print(
             f"{k:>3} | {df[f'hit_at_{k}'].mean():>6.3f} | "
             f"{df[f'recall_at_{k}'].mean():>6.3f} | "
             f"{df[f'full_evidence_at_{k}'].mean():>6.3f} | "
-            f"{df[f'precision_at_{k}'].mean():>6.3f}"
+            f"{df[f'precision_at_{k}'].mean():>6.3f} | "
+            f"{df[f'ndcg_at_{k}'].mean():>6.3f}"
         )
     print(f"MRR: {df['mrr'].mean():.3f}")
 
@@ -125,6 +154,7 @@ def main() -> None:
         ce_hit5=("hit_at_5", "mean"),
         ce_hit10=("hit_at_10", "mean"),
         ce_recall5=("recall_at_5", "mean"),
+        ce_ndcg5=("ndcg_at_5", "mean"),
         ce_full5=("full_evidence_at_5", "mean"),
     ).round(3)
     by_type["delta_hit5"] = (by_type["ce_hit5"] - by_type["bm25_hit5"]).round(3)
@@ -137,6 +167,7 @@ def main() -> None:
             bm25_hit5=("bm25_hit_at_5", "mean"),
             ce_hit5=("hit_at_5", "mean"),
             ce_recall5=("recall_at_5", "mean"),
+            ce_ndcg5=("ndcg_at_5", "mean"),
         ).round(3).to_string()
     )
 

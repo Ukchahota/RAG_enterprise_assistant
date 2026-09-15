@@ -1,5 +1,5 @@
-"""
-S3 — Modular RAG + Corrective hallucination detection.
+﻿"""
+S3 â€” Modular RAG + Corrective hallucination detection.
 
 Pipeline:
     BM25 top-50 -> CrossEncoder rerank -> relevance threshold
@@ -135,7 +135,7 @@ def decide_correction(verification, n_evidence):
 def main() -> None:
     questions = pd.read_csv(QUESTIONS_PATH, encoding="utf-8-sig")
     questions = questions.dropna(subset=["question"])
-    questions = questions[questions["question_id"].isin(SUBSET_IDS)]
+    # questions = questions[questions["question_id"].isin(SUBSET_IDS)]
 
     print("Loading BM25 index...")
     retriever = BM25Retriever()
@@ -235,7 +235,7 @@ def main() -> None:
     accepted = df[df["corrective_action"] == "accepted"]
 
     print("\n" + "=" * 66)
-    print(f"S3 — CORRECTIVE RAG ({model})")
+    print(f"S3 â€” CORRECTIVE RAG ({model})")
     print("=" * 66)
     print(f"Questions:              {len(df)}")
     print(f"Answers accepted:       {len(accepted)}")
