@@ -1,0 +1,46 @@
+item_id,system,question_id,question_type,label,stratum,cited,best_entailment,best_contradiction,supporting_chunk
+RV001,S1_basic_rag,V2Q085,multi_document_comparison,unsupported,unsupported,2 3,0.2018,0.01,UOL_postgraduate_handbook.pdf_p24_c10
+RV002,S2_modular_rag,V2Q088,multi_document_comparison,supported,entailed,2,0.9769,0.0629,"UOL_StudentAttendancePolicy-REVISEDJUL2025,v1.3.pdf_p4_c1"
+RV003,S1_basic_rag,V2Q075,procedural,supported,entailed,3,0.864,0.0399,UOL_extenuating_circumstances_policy.pdf_p5_c6
+RV004,S1_basic_rag,V2Q088,multi_document_comparison,contradicted,contradicted,,0.0349,0.9717,"UOL_StudentAttendancePolicy-REVISEDJUL2025,v1.3.pdf_p4_c3"
+RV005,S3_corrective_rag,V2Q090,multi_document_comparison,unsupported,unsupported,4,0.4745,0.2449,UOL_UKVI_complience.pdf_p9_c1
+RV006,S3_corrective_rag,V2Q004,paraphrased,unsupported,unsupported,,0.1702,0.0049,"UOL_Code,of,Practice,on,Assessment,and,Appendices,2025-26,Summary,of,Changes.pdf_p1_c1"
+RV007,S2_modular_rag,V2Q099,multi_document_synthesis,supported,entailed,5,0.8577,0.2522,UOL_extenuating_circumstances_policy.pdf_p8_c1
+RV008,S3_corrective_rag,V2Q018,paraphrased,supported,entailed,1,0.9584,0.4926,"UOL_Student,Complaints,Policy,and,Procedure.pdf_p12_c2"
+RV009,S2_modular_rag,V2Q023,adversarial_false_premise,unsupported,unsupported,,0.4703,0.0653,"UOL_Student,Complaints,Policy,and,Procedure.pdf_p17_c2"
+RV010,S1_basic_rag,V2Q038,reasoning,supported_uncited,entailed,,0.9189,0.0329,UOL_postgraduate_handbook.pdf_p22_c7
+RV011,S2_modular_rag,V2Q092,multi_document_comparison,unsupported,unsupported,2 3,0.0458,0.3722,UOL_student_conduct1.pdf_p4_c4
+RV012,S2_modular_rag,V2Q051,procedural,contradicted,contradicted,3,0.1033,0.9972,UOL_student_guide_visa_holders.pdf_p3_c1
+RV013,S2_modular_rag,V2Q052,paraphrased,unsupported,unsupported,,0.0009,0.0034,UOL_postgraduate_handbook.pdf_p14_c8
+RV014,S1_basic_rag,V2Q063,reasoning,contradicted,contradicted,,0.3722,0.991,"UOL_Code,of,Practice,on,Assessment,and,Appendices,2025-26,Summary,of,Changes.pdf_p6_c1"
+RV015,S1_basic_rag,V2Q079,factual,supported_uncited,entailed,,0.7751,0.395,UOL_student_conduct2.pdf_p7_c3
+RV016,S3_corrective_rag,V2Q023,adversarial_false_premise,supported,entailed,1 2,0.9335,0.0892,"UOL_Student,Complaints,Policy,and,Procedure.pdf_p17_c2"
+RV017,S3_corrective_rag,V2Q014,factual,nei,nei,,0.4505,0.0144,UOL_extenuating_circumstances_policy.pdf_p10_c3
+RV018,S2_modular_rag,V2Q038,reasoning,unsupported,unsupported,1,0.4838,0.0077,UOL_postgraduate_handbook.pdf_p22_c7
+RV019,S3_corrective_rag,V2Q041,factual,unsupported,unsupported,,0.417,0.0072,UOL_extenuating_circumstances_policy.pdf_p13_c5
+RV020,S2_modular_rag,V2Q074,factual,contradicted,contradicted,,0.8171,0.6164,UOL_extenuating_circumstances_policy.pdf_p15_c5
+RV021,S1_basic_rag,V2Q019,reasoning,unsupported,unsupported,,0.4519,0.0738,UOL_undergraduate_handbook.pdf_p16_c8
+RV022,S2_modular_rag,V2Q056,reasoning,unsupported,unsupported,2,0.3683,0.0936,UOL_student_conduct2.pdf_p10_c3
+RV023,S1_basic_rag,V2Q083,multi_document_comparison,nei,nei,1 2,0.0,0.0,
+RV024,S1_basic_rag,V2Q019,reasoning,unsupported,unsupported,1 2,0.1311,0.11,UOL_postgraduate_handbook.pdf_p16_c8
+RV025,S2_modular_rag,V2Q025,factual,nei,nei,,0.0,0.0,
+RV026,S2_modular_rag,V2Q077,adversarial_false_premise,contradicted,contradicted,,0.4493,0.9823,UOL_student_guide_visa_holders.pdf_p8_c4
+RV027,S2_modular_rag,V2Q058,factual,unsupported,unsupported,,0.0032,0.0019,UOL_undergraduate_handbook.pdf_p42_c1
+RV028,S3_corrective_rag,V2Q099,multi_document_synthesis,supported_uncited,entailed,3,0.8493,0.0259,UOL_extenuating_circumstances_policy.pdf_p8_c1
+RV029,S3_corrective_rag,V2Q004,paraphrased,supported,entailed,3,0.7657,0.0387,"UOL_Code,of,Practice,on,Assessment,and,Appendices,2025-26,Summary,of,Changes.pdf_p3_c4"
+RV030,S2_modular_rag,V2Q102,multi_document_synthesis,unsupported,unsupported,1,0.0233,0.4513,"UOL_Code,of,Practice,on,Assessment,and,Appendices,2025-26,Summary,of,Changes.pdf_p1_c1"
+RV031,S2_modular_rag,V2Q042,factual,contradicted,contradicted,,0.274,0.7667,UOL_undergraduate_handbook.pdf_p39_c5
+RV032,S1_basic_rag,V2Q058,factual,unsupported,unsupported,,0.002,0.036,UOL_postgraduate_handbook.pdf_p37_c7
+RV033,S1_basic_rag,V2Q042,factual,contradicted,contradicted,,0.9077,0.6598,UOL_undergraduate_handbook.pdf_p40_c10
+RV034,S2_modular_rag,V2Q046,factual,nei,nei,,0.0,0.0,
+RV035,S3_corrective_rag,V2Q023,adversarial_false_premise,unsupported,unsupported,,0.3224,0.3296,"UOL_Student,Complaints,Policy,and,Procedure.pdf_p17_c2"
+RV036,S2_modular_rag,V2Q040,factual,supported_uncited,entailed,,0.9871,0.2231,"UOL_Student,Complaints,Policy,and,Procedure.pdf_p2_c3"
+RV037,S3_corrective_rag,V2Q030,procedural,unsupported,unsupported,3 4,0.0082,0.0057,"UOL_payment_policy_2026,2027.pdf_p10_c2"
+RV038,S3_corrective_rag,V2Q025,factual,unsupported,unsupported,,0.0129,0.0012,UOL_undergraduate_handbook.pdf_p13_c9
+RV039,S2_modular_rag,V2Q085,multi_document_comparison,contradicted,contradicted,,0.415,0.9933,UOL_postgraduate_handbook.pdf_p24_c2
+RV040,S1_basic_rag,V2Q035,reasoning,contradicted,contradicted,5,0.8001,0.9929,UOL_extenuating_circumstances_policy.pdf_p15_c5
+RV041,S3_corrective_rag,V2Q093,multi_document_synthesis,nei,nei,,0.7992,0.1178,UOL_student_conduct2.pdf_p5_c1
+RV042,S1_basic_rag,V2Q033,paraphrased,unsupported,unsupported,,0.0291,0.046,UOL_student_guide_visa_holders.pdf_p4_c5
+RV043,S1_basic_rag,V2Q086,multi_document_comparison,contradicted,contradicted,3 4,0.1977,0.7909,UOL_undergraduate_handbook.pdf_p42_c5
+RV044,S1_basic_rag,V2Q090,multi_document_comparison,unsupported,unsupported,,0.118,0.0027,UOL_UKVI_complience.pdf_p6_c3
+RV045,S3_corrective_rag,V2Q097,multi_document_synthesis,unsupported,unsupported,1,0.1474,0.0062,UOL_extenuating_circumstances_policy.pdf_p4_c2
