@@ -10,6 +10,12 @@ Labels (per proposal section 7.4):
     contradicted         - a supplied chunk contradicts the sentence
     unsupported          - no supplied chunk entails the sentence
     nei                  - the sentence makes no verifiable factual claim
+
+Abstentions are handled explicitly: the corrective layer's refusal template
+describes the system's own verification state rather than asserting anything
+about the policy corpus, so its sentences are excluded from n_checkable. An
+abstaining answer therefore has no claim-level faithfulness score (the metric
+is undefined, not zero) and is counted separately as coverage loss.
 """
 
 import re
@@ -20,6 +26,14 @@ NLI_MODEL = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
 ENTAILMENT_THRESHOLD = 0.50
 CONTRADICTION_THRESHOLD = 0.50
 
+# Risk bands over the ungrounded (unsupported + contradicted) claim rate.
+# NOTE: a single contradicted claim forces HIGH. Because the contradiction
+# signal is low-precision on this corpus, HIGH counts are inflated by false
+# contradictions; report the unsupported and contradicted components
+# separately rather than relying on the risk band alone.
+RISK_HIGH_RATE = 0.5
+RISK_MEDIUM_RATE = 0.2
+
 # Sentences that assert nothing checkable.
 NON_CLAIM_PATTERNS = [
     r"^\s*(here|below|the following|in summary|to summari[sz]e)\b",
@@ -27,6 +41,17 @@ NON_CLAIM_PATTERNS = [
     r"^\s*(the evidence (does not|doesn't) (contain|include|provide))",
     r"^\s*(based on the (provided )?evidence)[,:]?\s*$",
     r":\s*$",
+]
+
+# Abstention boilerplate emitted by the corrective layer (S3). Kept separate
+# from NON_CLAIM_PATTERNS so an abstention can be distinguished from an empty
+# or non-assertive answer: both yield zero checkable claims, but only the
+# former is a deliberate refusal. Matched case-insensitively against the
+# citation-stripped sentence.
+ABSTENTION_PATTERNS = [
+    r"^\s*i cannot answer this question reliably",
+    r"^\s*the retrieved evidence does not adequately support a complete answer",
+    r"^\s*please consult the relevant policy document",
 ]
 
 _pipeline = None
@@ -87,9 +112,18 @@ def strip_citations(sentence: str) -> str:
     return re.sub(r"\s*\[[\d,\s]+\]", "", sentence).strip()
 
 
+def is_abstention(sentence: str) -> bool:
+    """True if the sentence is part of the corrective layer's refusal template."""
+    low = str(sentence).lower()
+    return any(re.search(p, low) for p in ABSTENTION_PATTERNS)
+
+
 def is_non_claim(sentence: str) -> bool:
-    low = sentence.lower()
-    return any(re.search(p, low) for p in NON_CLAIM_PATTERNS)
+    """True if the sentence asserts nothing checkable against the corpus."""
+    low = str(sentence).lower()
+    if any(re.search(p, low) for p in NON_CLAIM_PATTERNS):
+        return True
+    return is_abstention(sentence)
 
 
 @lru_cache(maxsize=20000)
@@ -134,6 +168,7 @@ def verify_sentence(sentence: str, evidence: list[dict]) -> dict:
         "best_contradiction": 0.0,
         "supporting_chunk": None,
         "contradicting_chunk": None,
+        "abstention": is_abstention(claim),
     }
 
     if is_non_claim(claim) or len(claim.split()) < 4:
@@ -180,42 +215,85 @@ def verify_sentence(sentence: str, evidence: list[dict]) -> dict:
     return {**base, "label": label}
 
 
-def verify_answer(answer: str, evidence: list[dict]) -> dict:
-    """Verify a full answer. Returns per-sentence results plus summary metrics."""
-    sentences = split_sentences(answer)
-    claims = [verify_sentence(s, evidence) for s in sentences]
+def summarise_labels(
+    labels: list[str],
+    any_citation: bool = True,
+    n_abstention: int = 0,
+) -> dict:
+    """
+    Compute the summary metrics from a list of per-sentence labels.
 
-    checkable = [c for c in claims if c["label"] != "nei"]
-    n = len(checkable) or 1
+    Separated from verify_answer so a summary can be rebuilt from a saved
+    claims file without re-running the NLI model.
 
+    faithfulness, unsupported_claim_rate and citation_accuracy are None
+    (not 0.0) where they are undefined: a rate over zero checkable claims is
+    not a rate of zero, and a citation accuracy for an answer that cites
+    nothing is not an accuracy of zero. Returning None lets pandas skip these
+    rows in a mean instead of silently pulling it toward zero.
+    """
     counts = {
-        label: sum(1 for c in claims if c["label"] == label)
+        label: sum(1 for lab in labels if lab == label)
         for label in ["supported", "supported_uncited", "contradicted",
                       "unsupported", "nei"]
     }
 
+    n_checkable = len(labels) - counts["nei"]
     grounded = counts["supported"] + counts["supported_uncited"]
-    faithfulness = grounded / n
-    unsupported_rate = (counts["unsupported"] + counts["contradicted"]) / n
-    citation_accuracy = counts["supported"] / (grounded or 1)
+    ungrounded = counts["unsupported"] + counts["contradicted"]
 
-    if counts["contradicted"] > 0 or unsupported_rate > 0.5:
+    if n_checkable > 0:
+        faithfulness = round(grounded / n_checkable, 4)
+        unsupported_rate = round(ungrounded / n_checkable, 4)
+    else:
+        faithfulness = None
+        unsupported_rate = None
+
+    if not any_citation:
+        # The answer contains no citation markers at all, so citation accuracy
+        # is undefined. This is the S0 case: reporting 0.0 would imply the
+        # system cited badly rather than not at all.
+        citation_accuracy = None
+    elif grounded > 0:
+        citation_accuracy = round(counts["supported"] / grounded, 4)
+    else:
+        citation_accuracy = 0.0
+
+    if n_checkable == 0:
+        # No verifier signal exists. Distinguished from LOW risk, which would
+        # wrongly present an empty or abstaining answer as well grounded.
+        risk = "ABSTAINED" if n_abstention > 0 else "NO_CLAIMS"
+    elif counts["contradicted"] > 0 or unsupported_rate > RISK_HIGH_RATE:
         risk = "HIGH"
-    elif unsupported_rate > 0.2:
+    elif unsupported_rate > RISK_MEDIUM_RATE:
         risk = "MEDIUM"
     else:
         risk = "LOW"
 
     return {
-        "claims": claims,
-        "n_sentences": len(claims),
-        "n_checkable": len(checkable),
+        "n_sentences": len(labels),
+        "n_checkable": n_checkable,
+        "n_abstention": n_abstention,
         **{f"n_{k}": v for k, v in counts.items()},
-        "faithfulness": round(faithfulness, 4),
-        "unsupported_claim_rate": round(unsupported_rate, 4),
-        "citation_accuracy": round(citation_accuracy, 4),
+        "faithfulness": faithfulness,
+        "unsupported_claim_rate": unsupported_rate,
+        "citation_accuracy": citation_accuracy,
         "hallucination_risk": risk,
     }
+
+
+def verify_answer(answer: str, evidence: list[dict]) -> dict:
+    """Verify a full answer. Returns per-sentence results plus summary metrics."""
+    sentences = split_sentences(answer)
+    claims = [verify_sentence(s, evidence) for s in sentences]
+
+    summary = summarise_labels(
+        [c["label"] for c in claims],
+        any_citation=any(c["cited"] for c in claims),
+        n_abstention=sum(1 for c in claims if c["abstention"]),
+    )
+
+    return {"claims": claims, **summary}
 
 
 if __name__ == "__main__":
@@ -239,3 +317,20 @@ if __name__ == "__main__":
     print(f"Unsupported rate:  {result['unsupported_claim_rate']}")
     print(f"Citation accuracy: {result['citation_accuracy']}")
     print(f"Risk:              {result['hallucination_risk']}")
+
+    # Abstention case: the refusal template must yield no checkable claims.
+    refusal = (
+        "I cannot answer this question reliably from the available University "
+        "documents. The retrieved evidence does not adequately support a "
+        "complete answer: 1 claim(s) in the draft answer were contradicted by "
+        "the retrieved evidence. Please consult the relevant policy document "
+        "directly, or contact Student Services for authoritative guidance."
+    )
+    ref = verify_answer(refusal, evidence)
+    print(
+        f"\nAbstention check -> n_sentences={ref['n_sentences']} "
+        f"n_checkable={ref['n_checkable']} n_abstention={ref['n_abstention']} "
+        f"faithfulness={ref['faithfulness']} risk={ref['hallucination_risk']}"
+    )
+    assert ref["n_checkable"] == 0, "refusal template still produces claims"
+    assert ref["faithfulness"] is None, "refusal must not score 0.0"

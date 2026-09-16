@@ -450,7 +450,7 @@ with tab_systems:
     hall = load_csv(RESULTS_DIR / "hallucination_evaluation.csv")
 
     st.subheader("S3 - effect of the corrective layer")
-    st.caption("Stratified 40-question subset; full 102-question run in progress.")
+    st.caption("Full evaluation - 102 answerable questions.")
 
     if s3 is None:
         st.info("Run `python -m src.evaluate_s3_corrective_rag` first.")
@@ -533,12 +533,13 @@ with tab_eval:
         st.info("Run `python -m src.evaluate_final_retriever` first.")
     else:
         st.subheader("Frozen retriever - 102 answerable questions")
-        a, b, c, d = st.columns(4)
+        a, b, c, d, e, f = st.columns(6)
         a.metric("Hit@5", f"{df['hit_at_5'].mean():.3f}")
-        b.metric("Hit@10", f"{df['hit_at_10'].mean():.3f}")
-        c.metric("Recall@5", f"{df['recall_at_5'].mean():.3f}")
-        d.metric("MRR", f"{df['mrr'].mean():.3f}")
-
+        b.metric("Recall@5", f"{df['recall_at_5'].mean():.3f}")
+        c.metric("Recall@10", f"{df['recall_at_10'].mean():.3f}")
+        d.metric("Precision@5", f"{df['precision_at_5'].mean():.3f}")
+        e.metric("nDCG@5", f"{df['ndcg_at_5'].mean():.3f}")
+        f.metric("MRR", f"{df['mrr'].mean():.3f}")
         st.subheader("BM25 baseline vs CrossEncoder rerank")
         by_type = df.groupby("question_type").agg(
             n=("question_id", "count"),
