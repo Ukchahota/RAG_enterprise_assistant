@@ -1,0 +1,64 @@
+﻿row_id,question_type,predicted_label,cited,best_entailment,best_contradiction,human_label,pred_c,human_c
+0,reasoning,unsupported,,0.0,0.0,supported,unsupported,entailed
+1,paraphrased,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+2,multi_document_comparison,contradicted,3 5,0.1867,0.9841,nei,contradicted,nei
+3,paraphrased,supported_uncited,,0.9837,0.1826,supported_uncited,entailed,entailed
+4,multi_document_synthesis,contradicted,,0.9222,0.5233,supported,contradicted,entailed
+5,multi_document_synthesis,supported_uncited,,0.9044,0.0063,supported_uncited,entailed,entailed
+6,factual,nei,,0.0,0.0,unsupported,nei,unsupported
+7,multi_document_comparison,contradicted,,0.4428,0.9583,nei,contradicted,nei
+8,factual,supported,2 3,0.9861,0.2755,supported,entailed,entailed
+9,multi_document_synthesis,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+10,procedural,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+11,factual,contradicted,1,0.0232,0.9741,nei,contradicted,nei
+12,procedural,supported_uncited,1,0.7219,0.426,supported_uncited,entailed,entailed
+13,paraphrased,contradicted,,0.9942,0.9763,supported,contradicted,entailed
+14,multi_document_synthesis,supported_uncited,,0.957,0.1149,supported_uncited,entailed,entailed
+15,paraphrased,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+16,multi_document_comparison,contradicted,4,0.8531,0.9959,nei,contradicted,nei
+17,multi_document_synthesis,nei,1 2 3 4 5,0.0,0.0,nei,nei,nei
+18,procedural,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+19,paraphrased,contradicted,4,0.253,0.6491,supported,contradicted,entailed
+20,adversarial_false_premise,contradicted,,0.47,0.945,nei,contradicted,nei
+21,paraphrased,supported_uncited,,0.8643,0.0128,supported_uncited,entailed,entailed
+22,multi_document_comparison,contradicted,5,0.2712,0.9805,supported,contradicted,entailed
+23,factual,supported_uncited,,0.9661,0.0123,supported_uncited,entailed,entailed
+24,factual,supported,5,0.8619,0.0035,supported,entailed,entailed
+25,multi_document_synthesis,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+26,factual,supported_uncited,4,0.6128,0.0637,supported_uncited,entailed,entailed
+27,reasoning,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+28,multi_document_synthesis,supported,2 3,0.724,0.0274,supported,entailed,entailed
+29,multi_document_comparison,supported,2,0.9781,0.0604,supported,entailed,entailed
+30,factual,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+31,procedural,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+32,procedural,nei,,0.0,0.0,unsupported,nei,unsupported
+33,paraphrased,supported,1,0.9959,0.0723,supported,entailed,entailed
+34,factual,supported,1 2,0.9976,0.9689,supported,entailed,entailed
+35,multi_document_comparison,supported,1 2 5,0.9925,0.0229,supported,entailed,entailed
+36,reasoning,supported_uncited,,0.959,0.0962,supported_uncited,entailed,entailed
+37,multi_document_comparison,contradicted,,0.0088,0.8391,supported,contradicted,entailed
+38,reasoning,supported,4,0.9891,0.0087,supported,entailed,entailed
+39,reasoning,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+40,factual,supported_uncited,,0.9923,0.0579,supported_uncited,entailed,entailed
+41,factual,supported_uncited,,0.8971,0.2215,supported_uncited,entailed,entailed
+42,paraphrased,supported,2,0.9871,0.4199,supported,entailed,entailed
+43,adversarial_false_premise,supported_uncited,,0.965,0.1903,supported_uncited,entailed,entailed
+44,adversarial_false_premise,contradicted,,0.4473,0.6409,nei,contradicted,nei
+45,procedural,supported,1,0.9962,0.0014,supported,entailed,entailed
+46,adversarial_false_premise,contradicted,,0.9462,0.6483,contradicted,contradicted,contradicted
+47,adversarial_false_premise,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+48,procedural,supported_uncited,,0.9809,0.0044,supported_uncited,entailed,entailed
+49,multi_document_synthesis,supported_uncited,,0.8523,0.0166,supported_uncited,entailed,entailed
+50,multi_document_synthesis,supported,2,0.8978,0.6195,nei,entailed,nei
+51,reasoning,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+52,factual,contradicted,,0.4374,0.824,supported,contradicted,entailed
+53,paraphrased,supported,1,0.9197,0.0867,supported,entailed,entailed
+54,factual,supported,1,0.9933,0.0008,supported,entailed,entailed
+55,multi_document_comparison,unsupported,,0.3886,0.3369,supported,unsupported,entailed
+56,procedural,supported,5,0.9493,0.0875,supported,entailed,entailed
+57,reasoning,contradicted,,0.9919,0.8558,supported,contradicted,entailed
+58,reasoning,supported_uncited,,0.9825,0.0205,supported_uncited,entailed,entailed
+59,reasoning,contradicted,3,0.4414,0.8857,supported,contradicted,entailed
+60,factual,supported,1,0.7812,0.3439,supported,entailed,entailed
+61,procedural,unsupported,,0.0,0.0,unsupported,unsupported,unsupported
+62,paraphrased,supported_uncited,,0.7617,0.0067,supported_uncited,entailed,entailed

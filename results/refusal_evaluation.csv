@@ -1,0 +1,223 @@
+﻿question_id,question,category,question_type,S0_answer,S0_refused,S1_answer,S1_refused,S2_answer,S2_refused,best_ce_score,below_threshold,S3_refused,S3_unsupported_rate,S3_risk
+V2Q113,What is my current outstanding tuition-fee balance?,unanswerable,unanswerable,"
+
+I don't have access to individual student financial records or tuition-fee balances. To check your outstanding balance, please log into your University of Liverpool student portal or contact the Student Finance team directly for accurate and up-to-date information.
+",True,"
+
+The evidence provided does not specify the current outstanding tuition-fee balance for individual students. It outlines payment schedules, deposit requirements, and loan disbursement structures but does not include a method or data point to determine a student's specific remaining balance. 
+
+ANSWER: The evidence does not contain information about your current outstanding tuition-fee balance.
+",True,"
+
+The provided evidence does not specify your current outstanding tuition-fee balance. It outlines processes for handling outstanding balances in cases of academic failure or dishonesty but does not include numerical or current balance details. [1][2]
+",False,0.3868328034877777,False,False,0.0,LOW
+V2Q114,What is my programme director's personal mobile number?,unanswerable,unanswerable,"
+
+I'm unable to provide personal contact details such as a programme director's mobile number, as this information is not publicly accessible and sharing it would violate privacy policies. I recommend contacting the University of Liverpool's main office or using the official contact information provided by your department for further assistance.
+",False,"
+
+The evidence provided does not contain any information about a programme director's personal mobile number. 
+
+ANSWER: The information about your programme director's personal mobile number is not available in the provided evidence.
+",True,"
+
+The evidence provided does not contain the programme director's personal mobile number. It mentions contact details for Student Life and the Director of Student Life but does not specify personal mobile numbers for individual programme directors. 
+
+ANSWER: The evidence does not provide the programme director's personal mobile number.
+",True,-4.184062957763672,True,True,0.0,LOW
+V2Q115,What time does the University sports centre close tomorrow?,unanswerable,unanswerable,"
+
+I'm not certain about the exact closing time for tomorrow, as it can vary depending on the day of the week or any special events. I recommend checking the official University of Liverpool sports centre website or contacting them directly for the most accurate and up-to-date information.
+",False,"
+
+The evidence provided does not contain information about the closing time of the University sports centre. [1, 2, 3, 4, 5]
+",True,"
+
+The evidence provided does not mention the closing time of the University Sports & Fitness Centre. [1]
+",False,-6.526824951171875,True,True,0.0,LOW
+V2Q116,What is the next train from Liverpool Lime Street to London?,unanswerable,unanswerable,"
+
+I'm unable to provide real-time train schedules or the next train details from Liverpool Lime Street to London, as I don't have access to live transport data. For the most accurate and up-to-date information, I recommend checking the official website or app of the train operator (e.g., LNER, Avanti West Coast) or using a journey planner tool like National Rail's website. Let me know if you need help finding those resources!
+",True,"
+
+The provided evidence does not contain information about train schedules or routes from Liverpool Lime Street to London. [1, 2, 3, 4, 5]
+",True,"
+
+The evidence provided does not contain any information about train schedules or services from Liverpool Lime Street to London. [1]
+",True,-8.10807991027832,True,True,1.0,HIGH
+V2Q117,What mark did I receive on my most recent assessment?,unanswerable,unanswerable,"
+
+I'm unable to access individual student assessment results. You'll need to check your university's learning management system (e.g., Blackboard, Moodle) or contact your course coordinator/department for your specific mark.
+",False,"
+
+The evidence provided does not contain specific information about the mark you received on your most recent assessment. It outlines policies regarding re-assessments, mark capping, and procedures for extenuating circumstances, but does not include individual student results or specific marks. 
+
+Answer: The evidence does not specify your exact mark on your most recent assessment.
+",True,"
+
+The evidence provided does not contain information about your specific mark on your most recent assessment. It outlines general policies regarding compensation ranges, overall averages, and award criteria but does not include personal assessment results. 
+
+Answer: The evidence does not specify your mark on your most recent assessment.
+",True,-0.8746464252471924,False,True,0.3333,HIGH
+V2Q118,Which room is my next lecture in?,unanswerable,unanswerable,"
+
+I don't have access to your specific timetable or lecture details. Could you please provide your name, course code, or the time of your next lecture? This will help me look up the room information for you.
+",True,"
+
+The evidence provided does not contain information about lecture room assignments or how to determine the room for a specific lecture. The details focus on accommodation, housemates, and general university events, but not academic schedules or lecture locations. 
+
+Answer: The evidence does not provide information about which room your next lecture is in.
+",True,"
+
+The evidence provided does not mention any specific room numbers or locations for lectures. It focuses on academic supervision, attendance requirements, and assessment policies but does not include logistical details like lecture room assignments. 
+
+ANSWER: The information about your next lecture room is not included in the provided evidence.
+",False,-6.951508522033691,True,True,0.6667,HIGH
+V2Q119,Has the Home Office approved my current visa application?,unanswerable,unanswerable,"
+
+I cannot check the status of your visa application or confirm whether the Home Office has approved it. For the most accurate and up-to-date information, I recommend checking the official Home Office website, using your case reference number to track your application online, or contacting your visa caseworker directly. Let me know if you need help finding these resources!
+",False,"
+
+The evidence provided does not contain information confirming whether the Home Office has approved your current visa application. The documents focus on processes like submitting visa applications, handling refusals, administrative reviews, and reporting requirements, but none explicitly state Home Office approval of a visa application. 
+
+ANSWER: The evidence does not provide information about Home Office approval of your visa application.
+",True,"
+
+The evidence does not provide information about whether the Home Office has approved your current visa application. It only mentions that the University is required to inform the Home Office of changes to your circumstances, not about approval status. 
+
+ANSWER: The evidence does not state whether the Home Office has approved your visa application. [1][2]
+",False,0.7311949729919434,False,True,0.5,MEDIUM
+V2Q120,How much money is currently in my University print account?,unanswerable,unanswerable,"
+
+I'm unable to check the exact balance in your University print account, as I don't have access to individual student accounts. You can check your account balance through the University of Liverpool's student portal or by contacting the Student Finance team for assistance. Let me know if you need help finding the right resource!
+",True,"
+
+The evidence provided does not contain any information about a ""University print account"" or the current balance in such an account. The documents focus on program fees, refunds, sponsorship, and debt collection procedures, but there is no mention of a print account or related financial details. 
+
+Answer: The evidence does not provide information about the current balance in a University print account.
+",True,"
+
+The evidence provided does not contain information about the current balance in a University print account. It focuses on payment policies, fees, and scholarships but does not mention account balances or print accounts specifically. 
+
+Answer: The evidence does not provide details about the current amount in your University print account.
+",True,-7.635809421539307,True,True,0.6667,HIGH
+V2Q103,Can I appeal?,ambiguous,ambiguous,"
+
+I'm not certain about the specific context of your appeal. Could you clarify what you're appealing (e.g., academic results, disciplinary decision, financial aid, etc.)? This will help me provide accurate guidance.
+",False,"
+
+Yes, you can appeal under specific circumstances. Evidence [1] states that an appeal must be submitted in writing within 10 working days of receiving the outcome letter. Evidence [2] outlines valid grounds for appeal, such as procedural errors or disproportionate sanctions. Evidence [3] further confirms the requirement to submit an appeal within 10 working days. [1][2][3]
+",False,"
+
+Yes, you can appeal in certain circumstances. For example:  
+- You can appeal a sanction or restriction if it is disproportionate to the offence [1].  
+- You can appeal decisions related to extenuating circumstances or academic decisions on procedural errors or new evidence [2].  
+- You can appeal restrictions imposed on you if they are deemed disproportionate [3, 4].  
+- You can appeal termination of studies on specific grounds [5].  
+
+Appeals must be submitted within 10 working days (or 5 working days for termination cases) and follow the procedures outlined in the relevant policies.
+",False,2.2703380584716797,False,True,0.1667,HIGH
+V2Q104,Can I get more time?,ambiguous,ambiguous,"
+
+I'm not certain what specific situation you're referring to when asking for ""more time."" Could you clarify whether you need an extension for an assignment, exam, or another academic deadline? I can then guide you on the appropriate process to request additional time through the University of Liverpool's systems or your department.
+",False,"
+
+The evidence provided does not contain information about whether you can get more time. None of the sections address requests for extensions or additional time allocations. 
+
+Answer: The evidence does not provide information on whether you can get more time.
+",True,"
+
+The evidence provided does not address the question of whether you can get ""more time"" in any specific context (e.g., extending work hours, time for activities, etc.). It only discusses part-time job regulations, the 15-hour weekly limit, and TV license requirements. 
+
+ANSWER: The evidence does not contain information about obtaining ""more time."" [1]
+",True,-6.817902565002441,True,True,0.6667,HIGH
+V2Q105,What happens if I miss the deadline?,ambiguous,ambiguous,"
+
+If you miss a deadline, the consequences depend on the specific course, module, or departmental policies at the University of Liverpool. Generally, missing a deadline could result in penalties such as a reduced grade, a zero mark for the assignment, or other academic repercussions. However, some departments may allow extensions or alternative arrangements if there are valid extenuating circumstances (e.g., medical issues, personal emergencies). 
+
+I cannot provide exact details without knowing the specific context of your deadline. I recommend checking with your course coordinator, module leader, or the university’s academic regulations page. For personalized advice, you can also contact the Student Support Services team.
+",False,"
+
+If you miss the deadline, the University will inform you of a revised deadline for your response, along with the reasons for the delay. This is outlined in [1] (Student Complaints Policy and Procedure, page 11), which states that if responding within 10 working days is not feasible, the student shall be informed of the revised timescale. Additionally, [4] (Student Complaints Policy and Procedure, page 13) specifies that where deadlines cannot be met, the student will be informed at the earliest opportunity of the revised deadline and the reasons for the delay. [2] (Student Complaints Policy and Procedure, page 13) further supports this by noting that the revised deadline and reasons for delay are normally provided.
+",False,"
+
+If you miss the deadline, you will be informed of the timescale for a response if it is impossible to meet the original 10 working day deadline [1].
+",False,-1.6240880489349365,True,True,0.0,LOW
+V2Q106,Can I retake it?,ambiguous,ambiguous,"
+
+I'm not certain because your question is a bit vague. Could you clarify what you'd like to retake (e.g., a specific module, exam, or assessment)? This will help me provide accurate information about the retake process.
+",False,,False,"
+
+Yes, you may be allowed to retake an examination or assessment if extenuating circumstances have affected your performance. This decision would be made by the Extenuating Circumstances Committee, which may recommend a re-sit/retake [1].
+",False,1.2842499017715454,False,False,0.0,LOW
+V2Q107,Who can help me with my problem?,ambiguous,ambiguous,"
+
+The University of Liverpool offers various support services depending on your specific issue. For example:  
+- **Student Support and Wellbeing** (for personal, academic, or general concerns).  
+- **Careers and Employability Service** (for job or career-related questions).  
+- **Academic Support Centre** (for study or assignment help).  
+- **Counselling and Mental Health Service** (for mental health or emotional challenges).  
+- **Students’ Union** (for welfare, advocacy, or campus-specific issues).  
+
+If you share more details about your problem, I can guide you to the most relevant contact. Let me know!
+",False,"
+
+You can contact the Wellbeing Team and Academic Adviser for support with issues affecting your wellbeing or academic potential [1, 2]. If your problem relates to financial hardship, contact Money Advice and Guidance [",False,"
+
+The University of Liverpool provides accredited advice and support for issues such as accommodation disputes, deposit returns, and tenancy problems [1].
+",False,-1.805408239364624,True,True,0.0,LOW
+V2Q108,I was treated unfairly. What should I do?,ambiguous,ambiguous,"
+
+If you believe you have been treated unfairly, here are general steps you can take:  
+
+1. **Document the incident**: Record details (dates, people involved, what happened) to support your case.  
+2. **Speak to your course leader or supervisor**: They may be able to address the issue directly.  
+3. **Escalate if needed**: If unresolved, contact your department’s academic office or the University’s Student Services for further guidance.  
+4. **Use formal channels**: The University may have a formal complaints or grievance process (check the [University of Liverpool student portal](https://www.liv.ac.uk/students) for specifics).  
+
+**Important**: Always follow the university’s official procedures. If unsure, contact the Student Union or Student Support Services for tailored advice. Let me know if you need help finding specific resources!
+",False,"
+
+If you believe you were treated unfairly, you should consider whether this treatment relates to a protected characteristic (e.g., accent, sports team support) as defined in the University of Liverpool Diversity, Equality and Opportunity Policy [2]. If so, this may constitute direct discrimination, and you should follow the procedures outlined in that policy. If the unfair treatment does not involve a protected characteristic, the provided evidence does not specify further steps.
+",False,"
+
+The evidence provided lists examples of unfair treatment but does not specify steps to take if you believe you have been treated unfairly. Therefore, I cannot provide actionable advice based on the given evidence. 
+
+Answer: The evidence does not contain specific guidance on what to do if you were treated unfairly.
+",True,0.841343879699707,False,True,0.6667,HIGH
+V2Q109,What happens if I stop attending?,ambiguous,ambiguous,"
+
+If you stop attending, the consequences can vary depending on your course, program, and the reason for stopping. Some courses may have strict attendance requirements, and failing to attend could impact your academic progress (e.g., risk of failing or being withdrawn). However, I cannot provide exact details without knowing your specific situation. I recommend contacting your school or department for personalized guidance.
+",False,"
+
+If you stop attending, the University may withdraw its sponsorship of your student visa, requiring you to leave the UK. This is outlined in the Student Attendance Policy (Evidence [5]), which specifies that students who meet certain attendance thresholds (e.g., 10 consecutive missed contacts or below 25% attendance in mandatory activities) could face withdrawal from their program and subsequent departure from the UK.
+",False,"
+
+The evidence does not explicitly address what happens if you stop attending. It focuses on scenarios like failing to register/enrol, voluntary withdrawal, or changes that cancel your visa, but there is no direct mention of consequences for stopping attendance. [1]
+",False,-2.979184865951538,True,True,0.0,LOW
+V2Q110,Do I need to report this?,ambiguous,ambiguous,"
+
+I’m unable to provide a specific answer without more details about what you’re referring to. Could you clarify the situation or context of ""this""? For example, is it related to academic integrity, a safety concern, a university policy, or something else? Let me know so I can guide you appropriately.
+",False,"
+
+The evidence does not explicitly state whether you need to report ""this"" without additional context about what ""this"" refers to. The provided information outlines reporting options (e.g., Report and Support in [1], [2], or the complaints process in [4]), but it does not mandate reporting in all cases. You would need to assess the specific situation against the guidelines provided.
+",False,,False,0.5658131241798401,False,False,0.0,LOW
+V2Q111,Can I change it?,ambiguous,ambiguous,"
+
+I'm not certain what you're referring to with ""it."" Could you clarify what specific change you're asking about (e.g., course, program, schedule, etc.)? This will help me provide accurate guidance.
+",False,"
+
+The evidence provided does not contain information about whether you can change a specific policy, timetable, or other item. The documents focus on accessing updates, notifications for timetable changes, and compliance details, but none address the process or permission to make changes. 
+
+Answer: The evidence does not specify whether you can change ""it."" [2], [3]
+",True,,False,-3.740300178527832,True,True,0.0,LOW
+V2Q112,What evidence do I need?,ambiguous,ambiguous,"
+
+I'm not certain what specific situation or process you're referring to when asking about ""evidence."" Could you clarify the context (e.g., applying for a loan, scholarship, visa, academic accommodation, etc.)? This will help me provide accurate guidance.
+",False,"
+
+The evidence required depends on the circumstances of your claim. According to [1], independent documentary evidence is typically necessary, such as a death certificate, funeral order of service, or letters from clergy/undertakers for bereavement. For ill health, [3] specifies that you must provide evidence you informed your department of your absence and dated, sourced documentation. [2] and [5] note that if independent evidence is unavailable, the committee may still consider the claim at their discretion, but evidence should still be dated and clearly sourced. [4] emphasizes that claims must be submitted on the correct form with supporting evidence. Always consult your department/school for specific requirements [1].
+",True,"
+
+You need to provide **independent documentary evidence** in most cases, which should be **dated and clearly state its source or author** [1]. If your claim relates to ill health, you must submit evidence that you informed your department of your absence due to illness [1]. For non-English documentation, an **independent translation** is required [2]. In cases like parental separation, a **statement of impact** and **third-party evidence** (e.g., address changes, letters from professionals) may be needed [3]. Evidence must be **contemporaneous with the events** [4]. If you cannot provide evidence immediately, you should still submit your claim on time and consult your academic adviser for alternatives (e.g., funeral notices instead of a death certificate) [5]. The committee may accept evidence even if it is not definitive, relying on the **balance of probabilities** [1, 2].
+",True,4.629214286804199,False,True,0.1111,HIGH
