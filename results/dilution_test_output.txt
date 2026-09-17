@@ -1,4 +1,4 @@
-﻿Loaded 1395 chunk texts from chunk_metadata.csv
+Loaded 1395 chunk texts from chunk_metadata.csv
 scoring 20 claims x 2 trims = 40 passes
 
 1/20 V2Q014 0.451 -> 0.063
