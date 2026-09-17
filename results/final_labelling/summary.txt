@@ -1,0 +1,115 @@
+FINAL CORRECTNESS LABELLING - SUMMARY
+Sample: 29 questions; withheld S3 drafts labelled: 45
+Primary rule: strict (partial = 0); empty answers excluded from paired tests.
+
+1. LABEL COUNTS ON THE SAMPLE
+           S0  S1  S2  S3  S3_ungated
+correct     6  11  16  13          18
+partial     4  10  10   3           9
+incorrect  19   7   3   0           2
+refused     0   0   0  13           0
+empty       0   1   0   0           0
+
+2. ACCURACY (non-empty answers; 95% Wilson intervals for strict)
+  S0          strict 6/29 = 0.207 [0.098, 0.384]   half 0.276   lenient 0.345
+  S1          strict 11/28 = 0.393 [0.236, 0.576]   half 0.571   lenient 0.750
+  S2          strict 16/29 = 0.552 [0.375, 0.716]   half 0.724   lenient 0.897
+  S3          strict 13/29 = 0.448 [0.284, 0.625]   half 0.500   lenient 0.552
+  S3_ungated  strict 18/29 = 0.621 [0.440, 0.773]   half 0.776   lenient 0.931
+
+3a. PAIRED EXACT McNEMAR, strict (primary: empty answers excluded; Holm-adjusted)
+  pair                 n  both  A only  B only  neither        p   p Holm
+  S0 vs S1            28     3       3       8       14   0.2266   0.9062
+  S1 vs S2            28     8       3       7       10   0.3438   1.0000
+  S0 vs S3            29     3       3      10       13   0.0923   0.4614
+  S1 vs S3            28     9       2       4       13   0.6875   1.0000
+  S2 vs S3            29    11       5       2       11   0.4531   1.0000
+  S3 vs S3_ungated    29    13       0       5       11   0.0625   0.3750
+
+3b. PAIRED EXACT McNEMAR, strict (sensitivity: empty answers count as not correct; Holm-adjusted)
+  pair                 n  both  A only  B only  neither        p   p Holm
+  S0 vs S1            29     3       3       8       15   0.2266   0.9062
+  S1 vs S2            29     8       3       8       10   0.2266   0.9062
+  S0 vs S3            29     3       3      10       13   0.0923   0.4614
+  S1 vs S3            29     9       2       4       14   0.6875   0.9062
+  S2 vs S3            29    11       5       2       11   0.4531   0.9062
+  S3 vs S3_ungated    29    13       0       5       11   0.0625   0.3750
+
+4. WITHHELD S3 DRAFTS (all withheld questions)
+label
+correct      21
+partial      11
+incorrect    13
+refused       0
+empty         0
+  Correct drafts withheld (cost): 21/45
+  Gate precision (withheld drafts not fully correct): 24/45 = 0.533 [0.391, 0.671]
+  Withheld drafts judged incorrect: 13; partial: 11
+
+  Draft labels by runtime_trigger:
+label               correct  partial  incorrect
+runtime_trigger                                
+both                      7        6          6
+contradiction only        3        2          1
+rate only                11        3          6
+
+  Draft labels by retrieval:
+label       correct  partial  incorrect
+retrieval                              
+complete         17        8          2
+incomplete        4        3         11
+
+  Draft labels by current_verifier:
+label                  correct  partial  incorrect
+current_verifier                                  
+has unsupported claim       16        7          9
+no unsupported claim         5        4          4
+
+  Draft labels by question_type:
+label                      correct  partial  incorrect
+question_type                                         
+adversarial_false_premise        4        2          0
+factual                          5        1          6
+multi_document_comparison        3        2          3
+multi_document_synthesis         1        1          2
+paraphrased                      4        2          1
+procedural                       2        1          0
+reasoning                        2        2          1
+
+5. S3 GATED vs UNGATED ON THE SAMPLE
+  S3          correct 13/29
+  S3_ungated  correct 18/29
+  Delivered S3 answers not fully correct (let through by the gate): 3/16
+
+6. SAMPLE LABELS BY QUESTION
+                    S0         S1         S2       S3 S3_ungated                       type
+question_id                                                                                
+V2Q005       incorrect    correct    partial  refused    partial  adversarial_false_premise
+V2Q011       incorrect    partial    correct  refused    correct  adversarial_false_premise
+V2Q006       incorrect    correct    correct  correct    correct                    factual
+V2Q071         partial    correct    correct  correct    correct                    factual
+V2Q061       incorrect    partial    correct  refused    partial                    factual
+V2Q007         correct    correct    correct  correct    correct                    factual
+V2Q032       incorrect  incorrect    correct  correct    correct                    factual
+V2Q024       incorrect    correct    correct  correct    correct                    factual
+V2Q042       incorrect  incorrect  incorrect  refused  incorrect                    factual
+V2Q091       incorrect    partial    correct  refused    correct  multi_document_comparison
+V2Q084         partial      empty    correct  refused    partial  multi_document_comparison
+V2Q088         partial    partial    correct  refused    correct  multi_document_comparison
+V2Q094         correct    correct    correct  correct    correct   multi_document_synthesis
+V2Q100         partial    partial  incorrect  partial    partial   multi_document_synthesis
+V2Q093         correct  incorrect  incorrect  refused  incorrect   multi_document_synthesis
+V2Q001       incorrect    correct    partial  refused    partial                paraphrased
+V2Q052         correct  incorrect    partial  refused    correct                paraphrased
+V2Q029       incorrect  incorrect    correct  correct    correct                paraphrased
+V2Q002         correct    correct    correct  correct    correct                paraphrased
+V2Q059         correct    partial    partial  partial    partial                paraphrased
+V2Q020       incorrect    partial    partial  refused    correct                paraphrased
+V2Q080       incorrect    correct    partial  correct    correct                paraphrased
+V2Q039       incorrect    partial    partial  refused    partial                paraphrased
+V2Q075       incorrect  incorrect    partial  partial    partial                 procedural
+V2Q008       incorrect  incorrect    partial  correct    correct                 procedural
+V2Q043       incorrect    correct    correct  correct    correct                 procedural
+V2Q072       incorrect    correct    correct  correct    correct                  reasoning
+V2Q038       incorrect    partial    correct  correct    correct                  reasoning
+V2Q063       incorrect    partial    partial  refused    partial                  reasoning
