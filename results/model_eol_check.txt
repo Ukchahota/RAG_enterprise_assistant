@@ -1,0 +1,4 @@
+﻿Checked: 2026-09-17
+Request: chat completion, model nvidia/nvidia-nemotron-nano-9b-v2, NVIDIA API (integrate.api.nvidia.com/v1)
+Response: HTTP 410 Gone - "The model 'nvidia/nvidia-nemotron-nano-9b-v2' has reached its end of life on 2026-08-26T09:00:00Z and is no longer available."
+Last evaluation run with this model: results/answers_s3_corrective_rag.csv, 2026-08-21 09:55
